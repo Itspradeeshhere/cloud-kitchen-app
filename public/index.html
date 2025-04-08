@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Kitchen - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ 
+
+</head>
+
+<body>
+
+
+
+
+ 
+
+    <!-- Header with Admin Login -->
+    <header>
+
+        <img title="Switch Theme" src="images/sun.png" id="icon">
+
+        <h1>Welcome to Cloud Kitchen</h1>
+        <a href="login.html" class="admin-btn">Admin Login</a>
+    </header>
+    
+   
+    <script>
+      const icon = document.getElementById("icon");
+    
+      // Check saved theme on page load
+      const savedTheme = localStorage.getItem("theme");
+    
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-theme");
+        icon.src = "images/moon.png";
+      } else {
+        document.body.classList.remove("dark-theme");
+        icon.src = "images/sun.png";
+      }
+    
+      // Toggle theme and save preference
+      icon.onclick = function () {
+        document.body.classList.toggle("dark-theme");
+    
+        if (document.body.classList.contains("dark-theme")) {
+          icon.src = "images/moon.png";
+          localStorage.setItem("theme", "dark");
+        } else {
+          icon.src = "images/sun.png";
+          localStorage.setItem("theme", "light");
+        }
+      };
+    </script>
+    
+    
+    <div class="about-section">
+    <div class="about-image">
+        <img src="images/2.jpg" class="scroll-reveal"alt="Kitchen Image" style="transition: transform 0.4s ease; border-radius: 12px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div class="about-description">
+      <h2>Restaurants Reimagined</h2>
+      <p>
+      CloudKitchens is taking restaurants to a whole new place. Where seamless delivery is prioritized, costs are minimized, and profits are maximized. And all you have to do is cook.
+      </p>
+      <a href="#today-menu" class="menu-link-button">
+      🍽️View Today’s Menu
+      </a>
+      <style>
+        .menu-link-button {
+          background-color: #9d9ea0;
+          color: white;
+          padding: 1px 10px;
+          border-radius: 5px;
+          text-decoration: none;
+          font-weight: bold;
+          display: inline-block;
+          transition: background-color 0.3s ease;
+        }
+        
+        .menu-link-button:hover {
+          background-color: #e04e00; /* Darker orange on hover */
+        }
+        </style>
+        
+    
+            
+    </div>
+  </div>
+
+  <div class="about-section reverse"> <!-- Added 'reverse' class -->
+    <div class="about-image">
+        <img src="  https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
+          alt="Kitchen Image" style="transition: transform 0.4s ease; border-radius: 12px;" 
+          onmouseover="this.style.transform='scale(1.05)'" 
+          onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div class="about-description">
+      <h2>About Our Cloud Kitchen</h2>
+      <p>
+        Our kitchen is a modern and hygienic space designed to serve high-quality meals at scale.
+        We focus on freshness, efficiency, and innovation. Every dish is prepared with love by our skilled chefs.
+      </p>
+      <p>
+        With technology-driven operations and a passion for food, we make every meal special for our customers.
+        Whether you're ordering breakfast, lunch, or dinner – we've got you covered.
+      </p>
+    </div>
+  </div>
+  
+    
+  <script>
+    window.addEventListener("scroll", function () {
+      const elements = document.querySelectorAll(".scroll-reveal");
+  
+      elements.forEach((el) => {
+        const position = el.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+  
+        if (position < screenHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+    });
+  </script>
+  
+    <!-- Hero Section -->
+    <section id="hero">
+        <h2>Delicious Meals Delivered to Your Doorstep</h2>
+        <p>Fresh, hygienic, and tasty food made just for you.</p>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2>Today's Menu</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Meal Type</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Sufficient For</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="today-menu"></tbody>
+        </table> 
+       
+        <h2>Upcoming Menu</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Meal Type</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Sufficient For</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="upcoming-menu"></tbody>
+        </table>
+        
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Cloud Kitchen</h2>
+        <p style="font-weight: 600;">
+          Cloud Kitchen is dedicated to providing fresh, high-quality meals to customers.
+          We offer a variety of dishes that are prepared daily with the best ingredients.
+        </p>
+      </section>
+      
+
+ 
+
+    <!-- JavaScript (Placed here to ensure elements are loaded) -->
+    <script src="admin.js"></script>
+    <script>
+        window.onload = function() {
+            console.log("Fetching menu...");
+            fetchMenu();
+        };
+    </script>
+    
+    
+    
+     <footer class="footer">
+    <div class="footer-container">
+      <!-- About Section -->
+      <div class="footer-section about">
+        <h2>Cloud Kitchen</h2>
+        <p>Fresh meals crafted with love, delivered right to your doorstep. Experience gourmet taste from the comfort of your home.</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#about-image"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#today-menu"><i class="fas fa-utensils"></i> Menu</a></li>
+          <li><a href="#today-menu"><i class="fas fa-receipt"></i> Orders</a></li>
+          <li><a href="#footer-section"><i class="fas fa-phone-alt"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-section contact">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-envelope"></i> pradeesh@gmail.com</p>
+        <p><i class="fas fa-phone"></i> +123 456 7890</p>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Food court, Town Hall</p><br>
+      </div>
+    </div>
+
+    <!-- Bottom Note -->
+    <div class="footer-bottom">
+  <h1 class="credit">Designed by Pradeesh</h1>
+    </div>
+    <div id="totop" class="active">
+        <i class="fas fa-chevron-up"></i>
+      </div>
+      <script>
+        // Show/hide the button when scrolling
+        window.addEventListener("scroll", function () {
+          const toTop = document.getElementById("totop");
+          if (window.scrollY > 300) {
+            toTop.style.display = "block";
+          } else {
+            toTop.style.display = "none";
+          }
+        });
+      
+        // Scroll to top when clicked
+        document.getElementById("totop").addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      </script>
+            
+    
+  </footer>
+  
+  
+</body>
+</html>
+
+
+
+
+
