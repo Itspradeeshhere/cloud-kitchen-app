@@ -1,9 +1,4 @@
 {
-    "name": "cloud-kitchen/app",
-    "description": "Cloud Kitchen Management System",
-    "require": {},
-    "scripts": {
-      "start": "php -S 0.0.0.0:10000 -t public"
-    }
-  }
-  
+  "name": "cloud-kitchen-app",
+  "require": {}
+}
